@@ -1,0 +1,19 @@
+import animal_mysql
+#import online_sale_mysql
+
+
+
+db = animal_mysql._mariadb("mysql","mysql","localhost",3306,"mysql")
+
+db.connect()
+
+db.createTable("ANIMAL_INS","ANIMAL_ID	VARCHAR(N)	FALSE ANIMAL_TYPE	VARCHAR(N)	FALSE DATETIME	DATETIME	FALSE INTAKE_CONDITION	VARCHAR(N)	FALSE NAME	VARCHAR(N)	TRUE SEX_UPON_INTAKE	VARCHAR(N)	FALSE")
+db.insertTable("ANIMAL_INS","A350276	Cat	2017-08-13 13:50:00	Normal	Jewel	Spayed Female A350375	Cat	2017-03-06 15:01:00	Normal	Meo	Neutered Male A368930	Dog	2014-06-08 13:20:00	Normal	NULL	Spayed Female",5)
+
+#db.createTable("ONLINE_SALE","ONLINE_SALE_ID	INTEGER	FALSE USER_ID	INTEGER	FALSE PRODUCT_ID	INTEGER	FALSE SALES_AMOUNT	INTEGER	FALSE SALES_DATE	DATE	FALSE")
+#db.insertTable("ONLINE_SALE","1	1	54	1	2022-01-01 2	1	3	2	2022-01-25 3	4	34	1	2022-01-30 4	6	253	3	2022-02-03 5	2	31	2	2022-02-09 6	5	35	1	2022-02-14 7	5	57	1	2022-02-18",4)
+
+db.dropTable("ANIMAL_INS")
+#db.dropTable("ONLINE_SALE")
+
+db.close()
