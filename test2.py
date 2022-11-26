@@ -1,19 +1,20 @@
-import animal_mysql
+#import animal_mysql
+import PRODUCT_CD_mysql
 #import online_sale_mysql
 
 
 
-db = animal_mysql._mariadb("mysql","mysql","localhost",3306,"mysql")
+db = PRODUCT_CD_mysql._mariadb("mysql","mysql","localhost",3306,"mysql")
 
 db.connect()
 
-db.createTable("ANIMAL_INS","ANIMAL_ID	VARCHAR(N)	FALSE ANIMAL_TYPE	VARCHAR(N)	FALSE DATETIME	DATETIME	FALSE INTAKE_CONDITION	VARCHAR(N)	FALSE NAME	VARCHAR(N)	TRUE SEX_UPON_INTAKE	VARCHAR(N)	FALSE")
-db.insertTable("ANIMAL_INS","A350276	Cat	2017-08-13 13:50:00	Normal	Jewel	Spayed Female A350375	Cat	2017-03-06 15:01:00	Normal	Meo	Neutered Male A368930	Dog	2014-06-08 13:20:00	Normal	NULL	Spayed Female",5)
+db.createTable("FOOD_PRODUCT","PRODUCT_ID	VARCHAR(10)	FALSE PRODUCT_NAME	VARCHAR(50)	FALSE PRODUCT_CD	VARCHAR(10)	TRUE CATEGORY	VARCHAR(10)	TRUE PRICE	NUMBER	TRUE")
+db.insertTable("FOOD_PRODUCT","P0018	맛있는고추기름	CD_OL00008	식용유	6100 P0019	맛있는카놀라유	CD_OL00009	식용유	5100 P0020	맛있는산초유	CD_OL00010	식용유	6500 P0021	맛있는케첩	CD_OL00001	소스	4500 P0022	맛있는마요네즈	CD_OL00002	소스	4700",4)
 
 #db.createTable("ONLINE_SALE","ONLINE_SALE_ID	INTEGER	FALSE USER_ID	INTEGER	FALSE PRODUCT_ID	INTEGER	FALSE SALES_AMOUNT	INTEGER	FALSE SALES_DATE	DATE	FALSE")
 #db.insertTable("ONLINE_SALE","1	1	54	1	2022-01-01 2	1	3	2	2022-01-25 3	4	34	1	2022-01-30 4	6	253	3	2022-02-03 5	2	31	2	2022-02-09 6	5	35	1	2022-02-14 7	5	57	1	2022-02-18",4)
 
-db.dropTable("ANIMAL_INS")
+db.dropTable("FOOD_PRODUCT")
 #db.dropTable("ONLINE_SALE")
 
 db.close()

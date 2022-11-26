@@ -87,7 +87,12 @@ class _mariadb:
         else:
             string+="PRIMARY KEY ("+Prikey+")"
 
-        string+=");"
+        #charset
+
+       
+
+        string+=") "
+        string+="CHARACTER SET utf8;" 
 
         self.sendQuery(string)
 
@@ -105,10 +110,10 @@ class _mariadb:
         for x in spltList:
             if cnt==problemNumber:
                 tmp = x.split(" ")
-                if(len(tmp)>2):
-                    addString+=tmp[0]+" "+tmp[1]
+                if(len(tmp)>1):
+                    addString+=tmp[0]
                     addList.append(addString)
-                    addString=tmp[2]+","
+                    addString=tmp[1]+","
                 else:
                     addString+=x
                     addList.append(addString)
@@ -121,16 +126,19 @@ class _mariadb:
     def insertTable(self,TableName,StringInfo,problemNumber):
 
         dataList = self.getClenString(StringInfo,problemNumber)
+        cnt = 0
 
 
         for x in dataList:
             s = "INSERT INTO "+TableName+" VAlUES ("
             t = x.split(",")
             for y in t:
-                if y == "NULL":
+                if y == "NULL" or cnt == problemNumber:
                     s+=y+","
                 else:     
-                    s+="'"+y+"'"+","    
+                    s+="'"+y+"'"+","
+                cnt+=1
+            cnt = 0    
             s = s[:-1:]
             s+=");"
             self.sendQuery(s)
