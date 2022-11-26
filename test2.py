@@ -8,13 +8,13 @@ db = PRODUCT_CD_mysql._mariadb("mysql","mysql","localhost",3306,"mysql")
 
 db.connect()
 
-db.createTable("FOOD_PRODUCT","PRODUCT_ID	VARCHAR(10)	FALSE PRODUCT_NAME	VARCHAR(50)	FALSE PRODUCT_CD	VARCHAR(10)	TRUE CATEGORY	VARCHAR(10)	TRUE PRICE	NUMBER	TRUE")
-db.insertTable("FOOD_PRODUCT","P0018	맛있는고추기름	CD_OL00008	식용유	6100 P0019	맛있는카놀라유	CD_OL00009	식용유	5100 P0020	맛있는산초유	CD_OL00010	식용유	6500 P0021	맛있는케첩	CD_OL00001	소스	4500 P0022	맛있는마요네즈	CD_OL00002	소스	4700",4)
+db.createTable("FIRST_HALF","SHIPMENT_ID	INT(N)	FALSE FLAVOR	VARCHAR(N)	FALSE TOTAL_ORDER	INT(N)	FALSE")
+db.insertTable("FIRST_HALF","101	chocolate	3200 102	vanilla	2800 103	mint_chocolate	1700 104	caramel	2600 105	white_chocolate	3100 106	peach	2450 107	watermelon	2150 108	mango	2900 109	strawberry	3100 110	melon	3150 111	orange	2900 112	pineapple	2900",2)
 
-#db.createTable("ONLINE_SALE","ONLINE_SALE_ID	INTEGER	FALSE USER_ID	INTEGER	FALSE PRODUCT_ID	INTEGER	FALSE SALES_AMOUNT	INTEGER	FALSE SALES_DATE	DATE	FALSE")
-#db.insertTable("ONLINE_SALE","1	1	54	1	2022-01-01 2	1	3	2	2022-01-25 3	4	34	1	2022-01-30 4	6	253	3	2022-02-03 5	2	31	2	2022-02-09 6	5	35	1	2022-02-14 7	5	57	1	2022-02-18",4)
+db.createTable("ICECREAM_INFO","FLAVOR	VARCHAR(N)	FALSE INGREDIENT_TYPE	VARCHAR(N)	FALSE")
+db.insertTable("ICECREAM_INFO","chocolate	sugar_based vanilla	sugar_based mint_chocolate	sugar_based caramel	sugar_based white_chocolate	sugar_based peach	fruit_based watermelon	fruit_based mango	fruit_based strawberry	fruit_based melon	fruit_based orange	fruit_based pineapple	fruit_based",1)
 
-db.dropTable("FOOD_PRODUCT")
-#db.dropTable("ONLINE_SALE")
+db.dropTable("FIRST_HALF")
+db.dropTable("ICECREAM_INFO")
 
 db.close()

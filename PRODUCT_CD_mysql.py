@@ -72,7 +72,7 @@ class _mariadb:
                     string+="NOT NULL"
                 elif vv == "TRUE":
                     string+=''
-                elif vv == "INTEGER" or vv == "NUMBER":
+                elif vv == "INTEGER" or "NUMBER" in vv or vv ==	"INT(N)":
                     string += "INT "
                 else:
                     string+=vv+" "
@@ -133,7 +133,7 @@ class _mariadb:
             s = "INSERT INTO "+TableName+" VAlUES ("
             t = x.split(",")
             for y in t:
-                if y == "NULL" or cnt == problemNumber:
+                if y == "NULL": #or cnt == problemNumber:
                     s+=y+","
                 else:     
                     s+="'"+y+"'"+","
