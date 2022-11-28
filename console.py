@@ -10,7 +10,7 @@ def getCleanList(s,resultIndex):
     _list = []
     for x in f:
         if cnt==resultIndex:
-            if '"' in x:
+            if x.count('"')==4:
                 c = c[0:len(c)-1]
                 xx = x[x.find('"'):x.find('"',1)+1]
                 y = x[x.find('"',2)+1:len(x)]
@@ -45,7 +45,13 @@ def run(argString,resultIndex,excFunc):
         sleep(1)
         elapsed = count_end() - start
         print(f'Elapsed cycles: {elapsed:,}')
-        if str(res) == ii[1].replace('"',''):
+        match = ii[1].replace('"','')
+        if match =="true":
+            match="True"
+        elif match =="false":
+            match ="False"
+
+        if str(res) == match:
             result = "TRUE"
         print(str(cnt)+": "+result)
         cnt+=1
@@ -57,48 +63,21 @@ def run(argString,resultIndex,excFunc):
 
 
 
-
-
-
-def convert_notation(n, base):
-    T = "0123456789ABCDEF"
-    q, r = divmod(n, base)
-
-    return convert_notation(q, base) + T[r] if q else T[r]
+def solution(s):
+    cnt = 0
+    for c in s:
+        if cnt<0:
+            return False
+        cnt = cnt+1 if c=="(" else cnt-1 if c==")" else cnt
+    return cnt==0
         
 
-def solution(A,B):
-    _list = []
-    for i in range(3**6):
-        x = convert_notation(i,3)
-        x = x.zfill(7 - len(x))
-        _list.append(x)
-
-    a = 1
-    b = _list[len(_list)-1]
-    c = 1
 
 
 
 
-    
-
-
-
-
-
-                
-
-
-            
-
-
-
-
-
-
-s = '[1, 4, 2]	[5, 4, 4]	29 [1,2]	[3,4]	10'
-run(s,2,"solution")
+s = '"()()"	true "(())()"	true ")()("	false "(()("	false'
+run(s,1,"solution")
 
 
 
