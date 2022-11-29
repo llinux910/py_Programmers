@@ -59,25 +59,36 @@ def run(argString,resultIndex,excFunc):
 
 
 
+from math import gcd
 
+import math
 
-
-
-def solution(s):
+def solution(brown, yellow):
+    sum = brown+yellow
     cnt = 0
-    for c in s:
-        if cnt<0:
-            return False
-        cnt = cnt+1 if c=="(" else cnt-1 if c==")" else cnt
-    return cnt==0
+    answer = []
+
+    while(True):
+        a,b = divmod(sum,2)
+        if b is not 0:
+            answer.append(cnt*2)
+            answer.append(sum)
+            break
+        else:
+            cnt+=1
+            sum = a
         
+    sorted(answer)
+
+   
+
+    return answer
 
 
 
 
-
-s = '"()()"	true "(())()"	true ")()("	false "(()("	false'
-run(s,1,"solution")
+s = '10	2	[4, 3] 8	1	[3, 3] 24	24	[8, 6]'
+run(s,2,"solution")
 
 
 
